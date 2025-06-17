@@ -1,0 +1,14 @@
+.team-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.team-panel.blue {
+    border-right: 2px solid #333;
+}
+
+.team-panel.red {
+    border-left: 2px solid #333;
+}

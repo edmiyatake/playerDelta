@@ -1,0 +1,31 @@
+.match-screen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    height: 100vh;
+    background: radial-gradient(#0a0a0a, #050505);
+}
+
+.vs-section {
+    text-align: center;
+    color: #ccc;
+    min-width: 160px;
+}
+
+.map-name {
+    font-size: 2rem;
+    color: white;
+    letter-spacing: 4px;
+}
+
+.vs-text {
+    font-size: 3rem;
+    color: #f44336;
+    font-weight: bold;
+}
+
+.mode {
+    font-size: 1rem;
+    opacity: 0.6;
+}
