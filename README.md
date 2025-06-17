@@ -1,25 +1,12 @@
-# PlayerDelta
+# React + Vite
 
-**PlayerDelta** started as a test between the homies — now it’s a data-driven battleground.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Input ten players, split them into two teams, and let the stats speak. Who’s the better team? Who’s the actual carry? PlayerDelta visualizes the difference — from ranks to clutch stats — all in a sleek, Valorant-inspired interface.
+Currently, two official plugins are available:
 
-🎮 **Features**
-- Simulated Valorant match loading screen
-- Enter 10 players → auto-generate two teams
-- Display agent, rank, KDA, win rate, and more
-- “Delta Score” that shows who’s really pulling weight
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-📈 **Planned Features**
-- Tracker.gg integration for real-time stats
-- Agent synergy alerts and match predictions
-- Save & share matchups with your team
+## Expanding the ESLint configuration
 
-🛠️ **Tech Stack**
-- React (custom CSS, no Tailwind)
-- Mock data → live data via Tracker.gg (future)
-- Optional backend for stat processing
-
----
-
-> Built for the homies. Powered by numbers.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
