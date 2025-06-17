@@ -5,7 +5,7 @@ export default function PlayerCard({ player }) {
         <div className="player-card">
             <img
                 className="agent-img"
-                src={`/assets/agents/${player.agent.toLowerCase()}.png`}
+                src={`/assets/agents/${player.agent.toLowerCase()}.webp`}
                 alt={player.agent}
             />
             <div className="player-info">

@@ -1,5 +1,5 @@
 import PlayerCard from './PlayerCard';
-import './TeamPanel.css'; // optional for styling
+import './TeamPanel.css';
 
 export default function TeamPanel({ teamName, teamColor, players }) {
     return (
