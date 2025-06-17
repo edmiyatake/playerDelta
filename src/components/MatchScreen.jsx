@@ -8,10 +8,13 @@ export default function MatchScreen() {
 
     return (
         <div className="match-screen">
+            <div className="map-header">
+                <h2 className="map-name">ASCENT</h2>
+            </div>
+
             <TeamPanel teamName="Defending" teamColor="blue" players={blueTeam} />
 
             <div className="vs-section">
-                <h2 className="map-name">ASCENT</h2>
                 <p className="vs-text">VS</p>
                 <p className="mode">COMPETITIVE</p>
             </div>

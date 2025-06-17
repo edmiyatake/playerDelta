@@ -1,13 +1,18 @@
 .player-card {
     display: flex;
     align-items: center;
-    background-color: #1c1c1c;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 10px;
-    width: 300px;
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    background-color: #0e0e0e;
+    padding: 16px;
+    margin: 6px 0;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.15);
+    border: none;
+    outline: none;
+    box-sizing: border-box;
 }
+
 
 .agent-img {
     width: 64px;
