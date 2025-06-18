@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import fetch from 'node-fetch';
+import axios from 'axios';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -10,25 +10,54 @@ const PORT = 3001;
 
 app.use(cors());
 
-app.get('/api/player/:region/:username', async (req, res) => {
-    const { region, username } = req.params;
-    const url = `https://public-api.tracker.gg/v2/valorant/standard/profile/${region}/${encodeURIComponent(username)}`;
+app.get('/api/player/:username', async (req, res) => {
+    const { username } = req.params;
+
+    if (!username.includes('#')) {
+        return res.status(400).json({ error: 'Use format Name#Tag' });
+    }
+
+    const [name, tag] = username.split('#');
 
     try {
-        const response = await fetch(url, {
-            headers: {
-                'TRN-Api-Key': process.env.TRACKER_API_KEY
+        // 1. Get PUUID
+        const accountRes = await axios.get(
+            `https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${name}/${tag}`,
+            {
+                headers: {
+                    'X-Riot-Token': process.env.RIOT_API_KEY
+                }
             }
-        });
+        );
 
-        const data = await response.json();
-        res.json(data);
+        const { puuid, gameName, tagLine } = accountRes.data;
+
+        // 2. Get MMR (rank) info
+        const mmrRes = await axios.get(
+            `https://na.api.riotgames.com/val/ranked/v1/mmr/na/${puuid}`,
+            {
+                headers: {
+                    'X-Riot-Token': process.env.RIOT_API_KEY
+                }
+            }
+        );
+
+        const mmr = mmrRes.data;
+
+        res.json({
+            name: gameName,
+            tag: tagLine,
+            puuid,
+            rank: mmr.currenttierpatched,
+            rr: mmr.ranking_in_tier,
+            mmrChange: mmr.mmr_change_to_last_game
+        });
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to fetch player data.' });
+        console.error('Riot API error:', err.response?.status, err.response?.data);
+        res.status(err.response?.status || 500).json({ error: 'Riot API error' });
     }
 });
 
 app.listen(PORT, () => {
-    console.log(`Backend server running at http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
